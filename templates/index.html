@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Main Page
+{% endblock %}
+
+{% block main %}
+    <table style="width:100%">
+        <tr>
+            <th>Stock Symbol</th>
+            <th>Number of Shares </th>
+            <th>Current Price</th>
+            <th>Total Value</th>
+        </tr>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{stock["Symbol"]}}</td>
+            <td>{{stock["Total_Shares"]}}</td>
+            <td>{{stock["price"]}}</td>
+            <td>{{stock["total"]}}</td>
+        {% endfor %}
+    </table>
+    </br></br></br>
+    <table style="width:100%">
+        <tr>
+            <p>Cash Holdings: ${{cash[0]["cash"] | usd}}</p>
+        </tr>
+        <tr>
+            <p>Grand Total: ${{grandtotal}}</p>
+        </tr>
+    </table>
+
+{% endblock %}
