@@ -56,7 +56,6 @@ def search():
 
         a = request.args.get("q") + "*"
 
-        #c = db.execute("SELECT * FROM places WHERE postal_code LIKE :b OR place_name LIKE :b OR admin_name1 LIKE :b", b = b)
         c = db.execute("SELECT * FROM places WHERE places MATCH :a", a = a)
 
         #since full text search may return alot more results, to return only 10 results if there are more than 10 results.
