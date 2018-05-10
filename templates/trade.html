@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Trade
+{% endblock %}
+
+{% block main %}
+    {% if error %}
+    <p class = 'error'><strong>Error:</strong> {{ error }}
+    {% endif %}
+
+    {% if good_buy %}
+    <p class = 'success'><strong>Success!:</strong> {{ good_buy }}
+    {% endif %}
+
+    {% if good_stop %}
+    <p class= 'success'><strong>Success!:</strong> {{ good_stop }}
+    {% endif %}
+
+    {% if good_sell %}
+    <p class= 'success'><strong>Success!:</strong> {{ good_sell }}
+    {% endif %}
+
+
+    <form action="{{ url_for('trade') }}" method="post">
+        <table>
+            <tr>
+                <b>Trade Type</b>
+                <div class="form-group">
+                    <input type="radio" name="trade" value="Buy" checked> Buy<br>
+                    <input type="radio" name="trade" value="Sell"> Sell<br>
+            </tr>
+            <tr>
+                <b>Amount</b>
+                <div class="form-group">
+                    <input autocomplete="off" autofocus class="form-control" name="amount" placeholder="Amount" />
+                </div>
+            </tr>
+            <tr>
+                <b>Price</b>
+                <div class="form-group">
+                    <input autocomplete="off" autofocus class="form-control" name="price" placeholder="Price" />
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <button class="btn btn-default" type="submit">Submit Order</button>
+                </div>
+            </tr>
+         </table>
+
+    </form>
+{% endblock %}
