@@ -7,7 +7,7 @@ in existence. Through the app, user will be able to obtain Bitcoin pricing, view
 the highlight of the app is the ability to submit stop loss orders, which is currently not supported natively by Gemini.
 
 ## Requirements to operate
-This web app resides in CS50 ide and utilizes flask and jinja templates to serve webpages accessable by browsers.
+This web app utilizes flask and jinja templates to serve webpages accessable by browsers.
 
 For purpose of testing and evaulation of this project, the app is already configured to connect to Gemini's sandbox environment using valid test API keys. In actuality for live usage, user will be required to
 obtain an actual Gemini account with API keys and change configured url within the app.
