@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block main %}
+
+
+<p>Last Updated: {{now}}</p>
+
+     <table id = "prices" style="width:100%">
+        <tr><b>Bitcoin Price</b></tr>
+        <tr>
+            <th>Currency</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>BTC- Bitcoin</td>
+            <td>{{p_btc}}</td>
+        </tr>
+    </table>
+    </br>
+    <table id = "balances" style="width:100%">
+        <tr><b>My Balances</b></tr>
+        <tr>
+            <th>Currency</th>
+            <th>Balance</th>
+            <th>Balance available for Trade</th>
+        </tr>
+        <tr>
+            <td>BTC- Bitcoin</td>
+            <td>{{balance_BTC}}</td>
+            <td>{{balanceBTC_available}}</td>
+        </tr>
+        <tr>
+            <td>USD</td>
+            <td>{{balance_USD}}</td>
+            <td>{{balanceUSD_available}}</td>
+        </tr>
+    </table>
+    </br>
+
+    <table id="past_trades" class="display" style="width:100%">
+
+    <tr><b>Last 10 Trades</b></tr>
+
+    <!-- table header -->
+    {% if past_trade_data %}
+        <tr>
+        {% for key in past_trade_data[0] %}
+            <th> {{ key }} </th>
+        {% endfor %}
+        </tr>
+    {% endif %}
+
+  <!-- table rows -->
+        {% for dict_item in past_trade_data %}
+        <tr>
+            {% for value in dict_item.values() %}
+            <td> {{ value }} </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    </br>
+
+    <table id="active_orders" class="display" style="width:100%">
+
+    <tr><b>Open Buy/Sell Orders</b></tr>
+
+    <!-- table header -->
+    {% if active_order %}
+        <tr>
+        {% for key in active_order[0] %}
+            <th> {{ key }} </th>
+        {% endfor %}
+        </tr>
+    {% endif %}
+
+  <!-- table rows -->
+        {% for dict_item in active_order %}
+        <tr>
+            {% for value in dict_item.values() %}
+            <td> {{ value }} </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    </br>
+
+
+    <table id="cancel" class="display" style="width:100%">
+    <tr>Insert Order Id to Cancel:  <form action="{{ url_for('index') }}" method="post">
+
+
+
+                <input autocomplete="off" autofocus class="form-control" name="order_id" placeholder="order_id" type="text"/>
+
+
+
+                <button class="btn btn-default" type="submit">Submit</button>
+
+
+        </form>
+    </tr>
+
+    </table>
+    </br>
+
+    <table id="stop" class="display" style="width:100%">
+    <tr><b>Open Stop Losses</b></tr>
+    <!-- table header -->
+    {% if stop %}
+        <tr>
+        {% for key in stop[0] %}
+            <th> {{ key }} </th>
+        {% endfor %}
+        </tr>
+    {% endif %}
+
+    <!-- table rows -->
+        {% for dict_item in stop %}
+        <tr>
+            {% for value in dict_item.values() %}
+            <td> {{ value }} </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    </br>
+
+    <table id="cancel" class="display" style="width:100%">
+    <tr>Insert Stop-loss No. to Cancel:  <form action="{{ url_for('index') }}" method="post">
+
+
+
+                <input autocomplete="off" autofocus class="form-control" name="No" placeholder="No" type="text"/>
+
+                <button class="btn btn-default" type="submit">Submit</button>
+
+
+        </form>
+    </tr>
+
+    </table>
+    </br>
+
+
+{% endblock %}
